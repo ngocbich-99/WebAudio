@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://use.fontawesome.com/releases/v5.0.3/js/all.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada:wght@700&family=Slabo+27px&display=swap"
+      rel="stylesheet"
+    />
+    <title>Audio app</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <!--heading-->
+    <h1 class="heading">App Audio</h1>
+    <!--recognize speech-->
+    <div class="container">
+      <form
+        action="https://zingmp3.vn/tim-kiem/bai-hat.html"
+        method="get"
+        target="_blank"
+        id="search-form"
+      >
+        <input
+          name="q"
+          type="text"
+          placeholder="Search ZingMp3..."
+          autocomplete="off"
+          autofocus
+        />
+        <!-- <button type="button"><i class="fas fa-microphone"></i></button> -->
+      </form>
+      <p class="info"></p>
+    </div>
+
+    <!--single audio-->
+    <audio id="player" ontimeupdate="updatePro()">
+      <source id="source" />
+      audio not supported
+    </audio>
+    <!--control play audio-->
+    <div id="controls">
+      <div>
+        <div style="padding-bottom: 12px;">
+          <img
+            style="width: 30%;"
+            src="/static/image/img2.jpg"
+            alt="img record"
+          />
+        </div>
+        <span id="Currentlyplaying"></span
+        ><strong><span id="currentSong"></span></strong>
+        <br />
+        <progress id="pro" value="0" max="100"></progress>
+      </div>
+      <i class="far fa-play-circle fa-2x" onclick="playAudio()"></i>
+      <i class="far fa-pause-circle fa-2x" onclick="pauseAudio()"></i>
+      <!--volume-->
+      <i class="fas fa-volume-down"></i>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" />
+      <i class="fas fa-volume-up"></i>
+    </div>
+    <h2>List song</h2>
+    <form
+      id="fileUp"
+      method="POST"
+      action="/upload"
+      enctype="multipart/form-data"
+    >
+      <input type="file" id="uploadedFile" name="file" />
+      <input type="submit" value="upload" name="saveAudio" />
+    </form>
+    <div id="songList"></div>
+    <!--table data from mysql-->
+    <table id="table">
+      <thead>
+        <th>Name song</th>
+        <th>Delete</th>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p>
+      Download music here:
+      <a href="https://www.bensound.com" target="_blank"
+        >https://www.bensound.com</a
+      >
+    </p>
+    <!--animated bubbles-->
+    <div class="bubbels">
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+    <script src="/static/index.js"></script>
+  </body>
+</html>
